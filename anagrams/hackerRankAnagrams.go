@@ -6,9 +6,9 @@ import (
 )
 
 var (
-	 a string
-	 b string
-	 )
+	a string
+	b string
+)
 
 func abs(num int) int {
 	return int(math.Abs(float64(num)))
@@ -35,6 +35,5 @@ func main() {
 	for i := 0; i < 26; i++ {
 		deletion += abs(alphabet[i])
 	}
-
 
 }
