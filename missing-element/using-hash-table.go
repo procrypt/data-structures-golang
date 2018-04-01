@@ -10,7 +10,7 @@ func main() {
 	c := make(map[int]int)
 
 	for _,i := range a {
-			c[i] += 1
+		c[i] += 1
 	}
 
 	for _, j := range b {
