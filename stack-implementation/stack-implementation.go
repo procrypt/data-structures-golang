@@ -6,7 +6,7 @@ type Stack struct {
 	container []interface{}
 }
 
-func(s *Stack) isEmpty() bool {
+func (s *Stack) isEmpty() bool {
 	if len(s.container) == 0 {
 		return true
 	} else {
@@ -14,13 +14,13 @@ func(s *Stack) isEmpty() bool {
 	}
 }
 
-func(s *Stack) pop() interface{} {
+func (s *Stack) pop() interface{} {
 	a := s.container[:len(s.container)-1]
 	s.container = a
 	return a
 }
 
-func(s *Stack) peek() interface{} {
+func (s *Stack) peek() interface{} {
 	return s.container[len(s.container)-1:]
 }
 
