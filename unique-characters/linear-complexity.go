@@ -9,9 +9,9 @@ func uniqueCharater(s string) bool {
 	}
 
 	for i := range s {
-		_,ok := c[string(s[i])]
+		_, ok := c[string(s[i])]
 		if ok {
-				return false
+			return false
 		} else {
 			c[string(s[i])] += 1
 		}
