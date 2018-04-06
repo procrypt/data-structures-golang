@@ -9,7 +9,7 @@ func unique(s string) bool {
 		c[string(s[i])] += 1
 	}
 
-	for k,_ := range c {
+	for k, _ := range c {
 		if c[k] > 1 {
 			return false
 			break
