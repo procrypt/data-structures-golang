@@ -1,51 +1,59 @@
-package singly_linked_list
+package main
 
 import "fmt"
 
-type element struct {
-	 value interface{}
-	 next  *element
+type LinkedList struct {
+	Head *Node
+	Tail *Node
+	size int
 }
 
-type List struct {
-	 first *element
-	 last  *element
-	 size   int
+type Node struct {
+	Data interface{}
+	Next *Node
 }
 
-func New() *List {
-	return &List{}
+func New() *LinkedList {
+	return &LinkedList{}
 }
 
-
-// Add elements to the end of the list
-func(list *List) Add(values ...interface{}) {
-	for _,value := range values {
-		newElement := &element{value: value} // Initialize a new list
-		if list.size == 0 {                  // If the size of the list is 0, means a new list, first and last element are same
-			list.first = newElement
-			list.last = newElement
-		} else {
-			list.last.next = newElement      // Next to the last element
-			list.last = newElement 	         // New Last Element
-		}
-		list.size++						     // Increment the list size
+func(list *LinkedList) Append(item interface{}) interface{} {
+	newElement := &Node{Data: item}
+	if list.size == 0 {
+		list.Head = newElement
+		list.Tail = newElement
+	} else {
+		list.Tail.Next = newElement
+		list.Tail = newElement
 	}
-
+	list.size++
+	return newElement
 }
 
+func(list *LinkedList) Size() int {
+	return list.size
+}
+
+func(list *LinkedList) IsEmpty() bool {
+	if list.size == 0 {
+		return true
+	} else {
+		return false
+	}
+}
+
+func(list *LinkedList) String() {
+	head := list.Head
+	if head != nil {
+		fmt.Println(head.Data)
+		list.Head = head.Next
+	}
+}
 
 func main() {
-
 	a := New()
-	a.Add("Abhishek", "Pratap", "Singh", "New York City", "New York")
-	a.Add("USA")
-
-	fmt.Println(a.first.value)
-	fmt.Println(a.first.next.value)
-	fmt.Println(a.first.next.next.value)
-	fmt.Println(a.first.next.next.next.value)
-	fmt.Println(a.first.next.next.next.next.value)
-	fmt.Println(a.first.next.next.next.next.next.value)
-
+	for i:=0; i<5; i++ {
+		a.Append(i)
+	}
+	a.String()
 }
