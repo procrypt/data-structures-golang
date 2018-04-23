@@ -17,7 +17,7 @@ func New() *LinkedList {
 	return &LinkedList{}
 }
 
-func(list *LinkedList) Append(item interface{}) interface{} {
+func(list *LinkedList) Append(item interface{}) {
 	newElement := &Node{Data: item}
 	if list.size == 0 {
 		list.Head = newElement
@@ -27,7 +27,6 @@ func(list *LinkedList) Append(item interface{}) interface{} {
 		list.Tail = newElement
 	}
 	list.size++
-	return newElement
 }
 
 func(list *LinkedList) Size() int {
@@ -44,16 +43,39 @@ func(list *LinkedList) IsEmpty() bool {
 
 func(list *LinkedList) String() {
 	head := list.Head
-	if head != nil {
-		fmt.Println(head.Data)
-		list.Head = head.Next
+	for {
+		if head == nil {
+			break
+		} else {
+			fmt.Println(head.Data)
+			head = head.Next
+		}
 	}
 }
 
+func(list *LinkedList) head() *Node {
+	return list.Head
+}
+
+func(list *LinkedList) indexOf(item interface{}) int {
+	head := list.Head
+	counter := 0
+	for {
+		if head.Data == item {
+			return counter
+		}
+		head = head.Next
+		counter++
+	}
+}
+
+
 func main() {
 	a := New()
-	for i:=0; i<5; i++ {
+	for i := 0; i < 5; i++ {
 		a.Append(i)
 	}
-	a.String()
+
+	//a.String()
+	fmt.Println(a.indexOf(4))
 }
